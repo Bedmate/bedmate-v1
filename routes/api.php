@@ -54,7 +54,7 @@ Route::group([], function() {
             Route::put('become-kink', [Escorts::class, 'becomeAkinks']);
             Route::get('{customer_id}', [Escorts::class, 'kink']);
             Route::delete('{customer_id}', [Escorts::class, 'destroy']);
-            
+
             // packages
             Route::get('{escortId}/packages',  [Escorts::class, 'getPackages']);
             Route::post('{escortId}/packages',              [Escorts::class, 'addPackage']);

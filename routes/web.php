@@ -25,7 +25,9 @@ Route::get('/', function () {
 });
 
 // Route::get('/upload', 'FileUploadController@showUploadForm');
-// Route::post('/upload', [FileUploadController::class, 'upload']);
+
+Route::post('/upload', [FileUploadController::class, 'upload']);
+
 // Route::get('email', function()  {
 //     return view('mail.email');
 // });
