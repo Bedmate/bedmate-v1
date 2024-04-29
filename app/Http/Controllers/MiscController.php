@@ -57,7 +57,7 @@ class MiscController extends Controller
             }
 
             $response = Http::withHeaders([
-                'Ocp-Apim-Subscription-Key' => '12c6a118a3994715bd4034e1b9fdc4c8',
+                'Ocp-Apim-Subscription-Key' => getenv('AZURE_FACE_API'),
                 'Content-Type' => 'application/json'
             ])->post('https://face-api-cumrid.cognitiveservices.azure.com/compare', [
                 'selfie' => base64_encode(file_get_contents($selfie)),
