@@ -30,7 +30,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::any('compare', [MiscController::class, 'compare']);
+Route::post('/compare', [MiscController::class, 'compareImages']);
+Route::get('/images', [MiscController::class, 'images'])->name('images');
+
 
 Route::group([], function() {
     Route::post('login',    [AuthController::class, 'login']);
@@ -61,7 +63,7 @@ Route::group([], function() {
             Route::put('become-kink', [Escorts::class, 'becomeAkinks']);
             Route::get('{customer_id}', [Escorts::class, 'kink']);
             Route::delete('{customer_id}', [Escorts::class, 'destroy']);
-            
+
             // packages
             Route::get('{escortId}/packages',  [Escorts::class, 'getPackages']);
             Route::post('{escortId}/packages',              [Escorts::class, 'addPackage']);
