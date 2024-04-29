@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//     return view('welcome');
     return get_success_response([
         "message" =>  "In the time of myth, in the kingdom of fun, there lived a platform : named Cumrid............"
     ]);
@@ -28,28 +28,33 @@ Route::get('/', function () {
 
 // Route::get('/upload', 'FileUploadController@showUploadForm');
 
-Route::post('/upload', [FileUploadController::class, 'upload']);
+// Route::post('/upload', [FileUploadController::class, 'upload']);
 
 // Route::get('email', function()  {
 //     return view('mail.email');
 // });
 
-Route::get('sample', function () {
-    $password = Hash::make('password');
-    for ($i = 0; $i < 30; $i++) {
-        User::factory()->create([
-            'name' => fake()->name(),
-            'email' => fake()->companyEmail(),
-            'is_escort' => true,
-            'password' => $password,
-            'username' => fake()->userName(),
-            'plans' => 'freemium'
-        ]);
-    }
-});
-
+// Route::get('sample', function () {
+//     $password = Hash::make('password');
+//     for ($i = 0; $i < 30; $i++) {
+//         User::factory()->create([
+//             'name' => fake()->name(),
+//             'email' => fake()->companyEmail(),
+//             'is_escort' => true,
+//             'password' => $password,
+//             'username' => fake()->userName(),
+//             'plans' => 'freemium'
+//         ]);
+//     }
+// });
 
 // routes/web.php
-Route::get('/images', [MiscController::class, 'images'])->name('images');
-//
-Route::post('/compare-images', [MiscController::class, 'compareImages'])->name('compare-images');
+// Route::get('/images', [MiscController::class, 'images'])->name('images');
+// //
+// Route::post('/compare-images', [MiscController::class, 'compareImages'])->name('compare-images');
+
+Route::fallback(function () {
+    return get_error_response([
+        'error' => 'Page Not Found. If error persists, contact support'
+    ], 404);
+});
