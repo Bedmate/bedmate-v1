@@ -2,9 +2,11 @@
 
 use App\Events\Playground;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\MiscController;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +47,9 @@ Route::get('sample', function () {
         ]);
     }
 });
+
+
+// routes/web.php
+Route::get('/images', [MiscController::class, 'images'])->name('images');
+//
+Route::post('/compare-images', [MiscController::class, 'compareImages'])->name('compare-images');

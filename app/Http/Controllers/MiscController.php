@@ -15,6 +15,10 @@ class MiscController extends Controller
         $this->rekognitionService = $rekognitionService;
     }
 
+    public function images()
+    {
+     return view('compare');
+    }
     public function compare(Request $request)
     {
         //     $request->validate([
@@ -47,6 +51,11 @@ class MiscController extends Controller
             $selfie = $request->file('selfie');
             $images = $request->file('images');
 
+            // Validate that files were uploaded
+            if (!$selfie || !$images) {
+                return response()->json(['status' => 'error', 'message' => 'Please upload selfie and images'], 400);
+            }
+
             $response = Http::withHeaders([
                 'Ocp-Apim-Subscription-Key' => '12c6a118a3994715bd4034e1b9fdc4c8',
                 'Content-Type' => 'application/json'
@@ -63,6 +72,8 @@ class MiscController extends Controller
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
         }
     }
+
+
 
 
 }

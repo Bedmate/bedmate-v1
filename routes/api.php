@@ -29,7 +29,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::any('compare', [MiscController::class, 'compare']);
+Route::post('/compare', [MiscController::class, 'compareImages']);
+Route::get('/images', [MiscController::class, 'images'])->name('images');
+
 
 Route::group([], function() {
     Route::post('login',    [AuthController::class, 'login']);
